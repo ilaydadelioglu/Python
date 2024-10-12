@@ -1,27 +1,23 @@
 import random
 import string
 
-# Kullanıcı bilgilerini tutacak basit bir sözlük (dictionary)
 users = {}
 
-# Rastgele şifre üretici fonksiyon
 def generate_password(length):
     characters = string.ascii_letters + string.digits + string.punctuation
     password = ''.join(random.choice(characters) for i in range(length))
     return password
 
-# Kullanıcı kaydetme fonksiyonu
 def register_user(username):
     if username in users:
         print("This username is already taken. Please choose another.")
     else:
-        # Rastgele şifre atama
-        password = generate_password(8)  # 8 karakterlik rastgele şifre
+        password = generate_password(8) 
         users[username] = password
         print(f"User '{username}' registered successfully!")
         print(f"Assigned password: {password}")
 
-# Şifre güncelleme fonksiyonu
+
 def update_password(username):
     if username in users:
         new_password = input("Enter your new password: ")
@@ -30,7 +26,7 @@ def update_password(username):
     else:
         print("Username not found. Please register first.")
 
-# Kullanıcı arayüzü
+
 def user_menu():
     while True:
         print("\n1. Register New User")
@@ -55,5 +51,4 @@ def user_menu():
         else:
             print("Invalid option. Please try again.")
 
-# Programı çalıştır
 user_menu()
